@@ -1,0 +1,1 @@
+Datanous Insight is the flagship RAG platform. It ingests documents in PDF, Word, Markdown, and plain-text formats and indexes them with a hybrid pipeline. Pricing: Starter 50 USD/month (10,000 pages), Professional 350 USD/month (100,000 pages), Enterprise unlimited pages with 99.9 percent uptime SLA.

@@ -1,0 +1,15 @@
+Datanous.ai — Technical Blog: Why We Built Datanous Insight on RAG
+
+At Datanous.ai we spent six months evaluating approaches before committing to Retrieval-Augmented Generation as the foundation of Datanous Insight. This post explains the reasoning.
+
+The core problem we set out to solve was institutional memory. Every organisation accumulates knowledge in documents: policy manuals, research reports, meeting notes, product specifications, regulatory filings. That knowledge is notoriously hard to surface at the moment someone needs it. Traditional search helps with known keywords but fails when the user does not know exactly how a concept was worded in the document that contains the answer.
+
+We initially considered fine-tuning a language model on each client's corpus. Fine-tuning failed for three reasons. First, it is expensive: retraining a model on a new document corpus costs thousands of dollars and takes days. Second, it does not generalise well to rare facts in the corpus, which are precisely the facts most likely to be forgotten by staff. Third, it cannot be updated in real time: when a client updates a policy document, the model must be retrained before it knows about the change.
+
+RAG solves all three problems. The language model is never retrained. Instead, we maintain a vector index of the client's document corpus. When a question arrives, we retrieve the most relevant passages and inject them directly into the prompt. The model reads the passages and generates a grounded answer. Updating the corpus requires only re-embedding the changed documents, which takes seconds. Rare facts are retrieved verbatim rather than recalled from compressed parametric memory.
+
+The main engineering challenge in Datanous Insight was retrieval quality. A naive single-stage vector search often returns passages that are semantically adjacent to the query but not actually useful for answering it. We addressed this with a two-stage pipeline. Stage one is a hybrid retriever that fuses BM25 and dense embedding scores using Reciprocal Rank Fusion, producing a candidate set of 20 passages. Stage two applies Cohere Rerank, a cross-encoder model that scores each passage jointly with the query. The final top-3 to top-5 passages go into the prompt. This two-stage approach improved answer faithfulness by 34 percent in our internal evaluation compared to single-stage dense retrieval.
+
+We evaluate every deployment on four dimensions: faithfulness (is every claim in the answer supported by a retrieved passage?), answer relevancy (does the answer address the question?), context precision (what fraction of retrieved passages were actually useful?), and context recall (did we retrieve all the passages needed to answer the question?). We use an LLM-as-judge evaluation pipeline running on a held-out set of 200 question-answer pairs per client, regenerated monthly.
+
+The result is a system that is auditable, updatable, and accurate on the long tail of institutional knowledge that traditional search and unaided language models both fail on.

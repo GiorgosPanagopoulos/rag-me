@@ -1,0 +1,31 @@
+Datanous.ai — Case Studies
+
+Case Study 1: Legal Services — Internal Knowledge Base for Contract Lawyers
+
+Client: A mid-size law firm with 120 lawyers and a document archive of 800,000 pages spanning contracts, court rulings, regulatory opinions, and internal memos.
+
+Challenge: Lawyers spent an average of 2.5 hours per day searching for relevant precedents and clauses. Full-text search was too imprecise. Hiring additional research staff was not cost-effective.
+
+Solution: Datanous.ai deployed Datanous Insight Professional with a custom chunking strategy tailored to legal document structure. Each contract section was treated as a separate chunk with metadata fields for document_type, jurisdiction, date, and practice_area. The retrieval pipeline uses metadata filters so that a question about employment law does not surface clauses from commercial contracts.
+
+Results: Average document search time reduced from 2.5 hours to 8 minutes. Lawyer satisfaction score increased from 3.1 to 4.6 out of 5. Retrieval faithfulness score on the evaluation set: 91 percent.
+
+Case Study 2: Banking — Regulatory Compliance Assistant
+
+Client: A retail bank with operations in five European countries, subject to MiFID II, GDPR, and local central bank regulations.
+
+Challenge: Compliance officers needed to answer staff queries about regulatory obligations in near real time. Regulations change frequently. The existing solution was a static FAQ document updated quarterly.
+
+Solution: Datanous.ai deployed Datanous Insight Enterprise with Datanous Guard enabled. The corpus consists of 12,000 pages of regulatory text, updated daily via an automated ingestion pipeline that monitors official regulatory publication feeds. Datanous Guard enforces that every answer is grounded in a retrieved regulation and redacts any PII that appears in submitted queries.
+
+Results: Staff query resolution time reduced from 4 days (email to compliance team) to under 30 seconds. Regulatory update lag reduced from 90 days (quarterly FAQ update) to 24 hours. Zero cross-tenant data incidents in 18 months of operation.
+
+Case Study 3: Healthcare — Clinical Protocol Navigator
+
+Client: A hospital network with 3,200 clinical staff across 8 hospitals.
+
+Challenge: Clinical staff needed instant access to treatment protocols, drug interaction guidelines, and discharge procedures. Protocols are stored in PDF format across multiple departmental SharePoint sites. Staff could not locate the correct protocol quickly during patient care.
+
+Solution: Datanous.ai deployed Datanous Insight Enterprise integrated with SharePoint via the native connector. The system ingests protocol PDFs, extracts structured metadata (department, protocol version, effective date), and builds a filtered retrieval index. Queries are routed to department-specific sub-indexes by a semantic router trained on protocol titles.
+
+Results: Protocol retrieval time reduced from 6 minutes (manual search) to 15 seconds. Protocol adherence score improved by 18 percent in the first quarter post-deployment. System handles 4,200 queries per day at peak.

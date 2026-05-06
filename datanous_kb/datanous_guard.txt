@@ -1,0 +1,1 @@
+Datanous Guard is an AI governance middleware. It performs four checks: (1) factual grounding, (2) prompt injection detection, (3) PII redaction, (4) tenant isolation by tenant_id filtering.
