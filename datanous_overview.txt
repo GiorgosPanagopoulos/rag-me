@@ -1,0 +1,9 @@
+Datanous.ai — Company Overview
+
+Datanous.ai is an AI services company founded in 2021 and headquartered in Athens, Greece, with offices in London and Amsterdam. The company specialises in the design, development, and deployment of enterprise-grade AI systems, with a focus on Retrieval-Augmented Generation, large language model integration, and AI governance.
+
+Products:
+Datanous Insight: a RAG-powered knowledge management platform that indexes enterprise documents and answers staff queries through a natural language interface with source citations.
+Datanous Search: a hybrid search platform combining BM25 and dense semantic retrieval with cross-encoder reranking for high-precision document retrieval.
+Datanous Guard: an AI governance layer enforcing factual grounding, prompt injection detection, PII redaction, and tenant-level access control.
+Datanous Embed: a managed embeddings API supporting text-embedding-3-small and text-embedding-3-large with Redis caching.
